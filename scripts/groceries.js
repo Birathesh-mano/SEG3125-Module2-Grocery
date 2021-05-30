@@ -4,22 +4,74 @@
 
 var products = [
 	{
-		name: "brocoli",
-		vegetarian: true,
-		glutenFree: true,
-		price: 1.99
+		name: "Milk",
+		LactoseFree: false,
+		ContainsNuts: true,
+		Organic: false,
+		price: 2.00
 	},
 	{
-		name: "bread",
-		vegetarian: true,
-		glutenFree: false,
-		price: 2.35
+		name: "Almond Milk",
+		LactoseFree: true,
+		ContainsNuts: true,
+		price: 3.00,
+		Organic: false,
 	},
 	{
-		name: "salmon",
-		vegetarian: false,
-		glutenFree: true,
-		price: 10.00
+		name: "Banana",
+		LactoseFree: true,
+		ContainsNuts: false,
+		price: 4.00,
+		Organic: true,
+	},
+	{
+		name: "Yogurt",
+		LactoseFree: false,
+		ContainsNuts: false,
+		price: 4.35,
+		Organic: false,
+	},
+	{
+		name: "Ice Cream",
+		LactoseFree: false,
+		ContainsNuts: true,
+		price: 2.35,
+		Organic: false,
+	},
+	{
+		name: "Peanuts",
+		LactoseFree: false,
+		ContainsNuts: true,
+		price: 5.35,
+		Organic: false,
+	},
+	{
+		name: "Trail Mix",
+		LactoseFree: false,
+		ContainsNuts: true,
+		price: 3.35,
+		Organic: false,
+	},
+	{
+		name: "Apple",
+		LactoseFree: false,
+		ContainsNuts: false,
+		price: 1.35,
+		Organic: true,
+	},
+	{
+		name: "Celery",
+		LactoseFree: false,
+		ContainsNuts: true,
+		price: 2.35,
+		Organic: true,
+	},
+	{
+		name: "Orange",
+		LactoseFree: false,
+		ContainsNuts: false,
+		price: 2.00,
+		Organic: true,
 	}
 ];
 	
@@ -31,10 +83,13 @@ var products = [
 function restrictListProducts(prods, restriction) {
 	let product_names = [];
 	for (let i=0; i<prods.length; i+=1) {
-		if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
+		if ((restriction == "LactoseFree") && (prods[i].LactoseFree == true)){
 			product_names.push(prods[i].name);
 		}
-		else if ((restriction == "GlutenFree") && (prods[i].glutenFree == true)){
+		else if ((restriction == "ContainsNuts") && (prods[i].ContainsNuts == true)){
+			product_names.push(prods[i].name);
+		}
+		else if ((restriction == "Organic") && (prods[i].Organic == true)){
 			product_names.push(prods[i].name);
 		}
 		else if (restriction == "None"){
