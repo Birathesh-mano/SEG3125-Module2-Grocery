@@ -6,72 +6,83 @@ var products = [
 	{
 		name: "Milk",
 		LactoseFree: false,
-		ContainsNuts: true,
+		NutFree: false,
 		Organic: false,
-		price: 2.00
+		price: 2.00,
+		LactoseFreeAndNutFree: false
 	},
 	{
 		name: "Almond Milk",
 		LactoseFree: true,
-		ContainsNuts: true,
+		NutFree: false,
 		price: 3.00,
 		Organic: false,
+		LactoseFreeAndNutFree: true
 	},
 	{
 		name: "Banana",
 		LactoseFree: true,
-		ContainsNuts: false,
+		NutFree: true,
 		price: 4.00,
 		Organic: true,
+		LactoseFreeAndNutFree: true
 	},
 	{
 		name: "Yogurt",
 		LactoseFree: false,
-		ContainsNuts: false,
+		NutFree: true,
 		price: 4.35,
 		Organic: false,
+		LactoseFreeAndNutFree: false
 	},
 	{
 		name: "Ice Cream",
 		LactoseFree: false,
-		ContainsNuts: true,
+		NutFree: true,
 		price: 2.35,
 		Organic: false,
+		LactoseFreeAndNutFree: false
 	},
 	{
 		name: "Peanuts",
-		LactoseFree: false,
-		ContainsNuts: true,
+		LactoseFree: true,
+		NutFree: false,
 		price: 5.35,
 		Organic: false,
+		LactoseFreeAndNutFree: false
 	},
 	{
 		name: "Trail Mix",
-		LactoseFree: false,
-		ContainsNuts: true,
+		LactoseFree: true,
+		NutFree: false,
 		price: 3.35,
 		Organic: false,
+		LactoseFreeAndNutFree: false
 	},
 	{
 		name: "Apple",
-		LactoseFree: false,
-		ContainsNuts: false,
+		LactoseFree: true,
+		NutFree: true,
 		price: 1.35,
 		Organic: true,
+		LactoseFreeAndNutFree: true
 	},
 	{
 		name: "Celery",
-		LactoseFree: false,
-		ContainsNuts: true,
+		LactoseFree: true,
+		NutFree: true,
 		price: 2.35,
 		Organic: true,
+		LactoseFreeAndNutFree: true
+
 	},
 	{
 		name: "Orange",
-		LactoseFree: false,
-		ContainsNuts: false,
+		LactoseFree: true,
+		NutFree: true,
 		price: 2.00,
 		Organic: true,
+		LactoseFreeAndNutFree: false
 	}
 ];
 	
@@ -83,18 +94,35 @@ var products = [
 function restrictListProducts(prods, restriction) {
 	let product_names = [];
 	for (let i=0; i<prods.length; i+=1) {
+
+		if((restriction == "Organic") && (prods[i].Organic == true)){
 		if ((restriction == "LactoseFree") && (prods[i].LactoseFree == true)){
 			product_names.push(prods[i].name);
 		}
-		else if ((restriction == "ContainsNuts") && (prods[i].ContainsNuts == true)){
+		else if ((restriction == "NutFree") && (prods[i].NutFree == true)){
 			product_names.push(prods[i].name);
 		}
-		else if ((restriction == "Organic") && (prods[i].Organic == true)){
+	
+		else if ((restriction == "Lactose Free and Nut Free") && (prods[i].LactoseFreeAndNutFree == true)){
 			product_names.push(prods[i].name);
 		}
 		else if (restriction == "None"){
 			product_names.push(prods[i].name);
-		}
+		}}
+		else if((restriction == " Non Organic") && (prods[i].Organic == false)){
+			if ((restriction == "LactoseFree") && (prods[i].LactoseFree == true)){
+				product_names.push(prods[i].name);
+			}
+			else if ((restriction == "NutFree") && (prods[i].NutFree == true)){
+				product_names.push(prods[i].name);
+			}
+		
+			else if ((restriction == "Lactose Free and Nut Free") && (prods[i].LactoseFreeAndNutFree == true)){
+				product_names.push(prods[i].name);
+			}
+			else if (restriction == "None"){
+				product_names.push(prods[i].name);
+			}}
 	}
 	return product_names;
 }
